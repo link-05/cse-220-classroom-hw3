@@ -1,3 +1,4 @@
+// Name: Kevin Lin SBUID: 116145453
 #ifndef MY_BIT_MANIPULATION_H
 #define MY_BIT_MANIPULATION_H
 
@@ -6,5 +7,5 @@ int GetMSB(int num);
 int ClearBitRange(int num, int start, int end);
 int RotateLeft(int num, int d);
 int SwapOddEvenBits(int num);
-
+void printBinary(unsigned int num);
 #endif

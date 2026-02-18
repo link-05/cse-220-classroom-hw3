@@ -1,3 +1,5 @@
+// Name: Kevin Lin SBUID: 116145453
+
 #include "Myfloat.h"
 #include <stdio.h>
 

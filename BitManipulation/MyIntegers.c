@@ -1,3 +1,5 @@
+// Name: Kevin Lin SBUID: 116145453
+
 #include "MyIntegers.h"
 #include <stdio.h>
 #include <stdbool.h>

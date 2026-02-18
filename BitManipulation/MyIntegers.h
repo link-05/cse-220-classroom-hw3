@@ -1,3 +1,5 @@
+// Name: Kevin Lin SBUID: 116145453
+
 #ifndef MY_INTEGERS_H
 #define MY_INTEGERS_H
 

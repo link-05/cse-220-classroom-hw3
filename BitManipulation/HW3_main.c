@@ -1,3 +1,4 @@
+// Name: Kevin Lin SBUID: 116145453
 #include <stdio.h>
 #include "MyBitManipulation.h"
 #include "Myfloat.h"
