@@ -5,11 +5,26 @@
 
 float construct_float_sf(char sign_bit, char exponent, unsigned int fraction) {
    unsigned int f = 0;
-
-   /*
-    * Start coding here
-    * Use bitwise operations to construct the IEEE 754 float
-    */
-
+   /* The float is 32 bit */
+   // Using masking shift the position like how the DOB during recitation was like
+   // Sign_bit is 00000000 (+) or 000000001 (-)
+   // Move the first sign bit to position 31 of the float.
+   f |= ((sign_bit & 1) << 31);   
+   //Move the exponent to position 23, its 8 bit will cover 23 to 30.
+   f |= (exponent << 23);
+   // No need to move the fraction. Combine it with |
+   f |= fraction;
    return *(float *)&f;
 }
+
+// Function copied from lecture 6 slide 10
+// For debugging purpose
+// Function to print an integer in binary (up to 32 bits)
+// void printBinarys(unsigned int n) {
+//    for (int i = 31; i >= 0; i--) {
+//       unsigned int mask = 1 << i;
+//       printf("%d", (n & mask) ? 1 : 0);
+//       if (i % 4 == 0) printf(" "); // space every 4 bits
+//    }
+//    printf("\n");
+// }

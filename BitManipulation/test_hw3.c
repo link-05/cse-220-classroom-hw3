@@ -10,11 +10,24 @@
 Test(ToggleBit, examples) {
    cr_assert_eq(ToggleBit(9, 0), 8);
    cr_assert_eq(ToggleBit(9, 3), 1);
+
+   //Test Cases, explanation and type is in README.MD
+   cr_assert_eq(ToggleBit(0xffffffff, 32), -1);
+   cr_assert_eq(ToggleBit(0xffffffff, 31), 0x7fffffff);
+   cr_assert_eq(ToggleBit(-5, 0), -6);
+   cr_assert_eq(ToggleBit(-1, 31), 0x7fffffff);
 }
 
 Test(GetMSB, examples) {
    cr_assert_eq(GetMSB(18), 4);
    cr_assert_eq(GetMSB(0), -1);
+
+   //Test Cases, explanation and type is in README.MD
+   cr_assert_eq(GetMSB(1), 0);
+   cr_assert_eq(GetMSB(0xffffffff), 31);
+   cr_assert_eq(GetMSB(0xcccccccc), 31);
+   cr_assert_eq(GetMSB(0x7fffffff), 30);
+
 }
 
 Test(ClearBitRange, examples) {
@@ -56,6 +69,12 @@ Test(ConstructFloat, negative_examples) {
 Test(ReprConvert, basic_run) {
    repr_convert('2', '2', 0x59f2ca50);
    repr_convert('S', '2', 0x80000000);
+   //Given test cases
+   // repr_convert('S', '2', 0x80000001);
+   // repr_convert('F', '2', 0x80000000);
+   // repr_convert('2', 'S', 0x80000000);
+
+
 }
 
 
