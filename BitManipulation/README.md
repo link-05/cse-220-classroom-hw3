@@ -79,3 +79,35 @@ HW3/
 
     # half of Even odd both 1 => 0000...1100...
 	SwapOddEvenBits(0x0000cccc) expects 0x0000cccc
+---
+# construct_float_sf test 
+    # Positive zero
+    construct_float_sf(0x00, 0x00, 0x000000) expects 0.0
+
+    # Negative zero
+    construct_float_sf(0x01, 0x00, 0x000000) expects 0.0 
+
+    # Positive one decimal
+    construct_float_sf(0x00, 0x7F, 0x000000) expects 1.0
+
+    # Negative one decimal
+    construct_float_sf(0x01, 0x7F, 0x000000) expects -1.0
+
+    # Positive first position fraction (0.5)
+    construct_float_sf(0x00, 0x7E, 0x000000) expects 0.5
+
+    # Negative first position fraction (-0.5)
+    construct_float_sf(0x01, 0x7E, 0x000000) expects -0.5
+
+    # Positive random fraction only (0.1234)
+    construct_float_sf(0x00, 0x7B, 0x7CB924) expects 0.1234
+
+    # Negative random fraction only (-0.1234)
+    construct_float_sf(0x01, 0x7B, 0x7CB924) expects -0.1234
+
+    # Positive multi-decimal only (1234.0) exponent > 127
+    construct_float_sf(0x00, 0x89, 0x1A4000) expects 1234.0
+
+    # Negative multi-decimal only (-1234.0) exponent > 127
+    construct_float_sf(0x01, 0x89, 0x1A4000) expects -1234.0
+---
