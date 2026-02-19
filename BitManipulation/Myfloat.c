@@ -8,10 +8,16 @@ float construct_float_sf(char sign_bit, char exponent, unsigned int fraction) {
    /* The float is 32 bit */
    // Using masking shift the position like how the DOB during recitation was like
    // Sign_bit is 00000000 (+) or 000000001 (-)
-   // Move the first sign bit to position 31 of the float.
-   f |= ((sign_bit & 1) << 31);   
+   // Move the first sign bit to position 31 of the float.'
+   // Casting to unsigned int, removes overflow errors
+   f |= ((unsigned int)(sign_bit & 1) << 31);  
+
    //Move the exponent to position 23, its 8 bit will cover 23 to 30.
-   f |= (exponent << 23);
+   // Exponent may overflow with test case 0x89 or 137,
+   //     mask the 8 bits and ensure that it doesn't overflow by casting.
+   //    need to apply the cast right away otherwise saving it will overflow again.
+   f |= ((unsigned int)exponent & 0xff) << 23;
+
    // No need to move the fraction. Combine it with |
    f |= fraction;
    return *(float *)&f;

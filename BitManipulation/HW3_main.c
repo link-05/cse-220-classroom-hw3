@@ -12,9 +12,9 @@ int main(void) {
    printf("GetMSB(18) = %d\n", GetMSB(18));
    printf("ClearBitRange(73, 1, 3) =  %d\n", ClearBitRange(73, 1, 3));
    /* PART 2: Float Construction */
-   float f = construct_float_sf(0x00, 0x7F, 0x200000);
-   printf("f = %g\n", construct_float_sf(0x00, 0x76, 0x299B6F));
-   printf("Float value = %g\n", f);
+   // float f = construct_float_sf(0x00, 0x7F, 0x200000);
+   printf("f = %g\n", construct_float_sf(0x00, 0x89, 0x1A4000));
+   // printf("Float value = %g\n", f);
 
    /* PART 3: Integer Representation Conversion */
    repr_convert('S', '2', 0x80000001);
