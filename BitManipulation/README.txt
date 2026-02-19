@@ -31,7 +31,7 @@ MyBitManipulation.c
 # GetMSB edge cases
     # MSB at LSB
     GetMSB(1) expects 0
-    
+
     # Max 32 bit integer
     GetMSB(0xffffffff) expects 31
 
@@ -40,3 +40,42 @@ MyBitManipulation.c
 
     # All except leftmost bit is 1
     GetMSB(0x7fffffff), 30
+---
+# ClearBitRange edge cases
+    # Clear first half of all 1 bit
+    ClearBitRange(0xffffffff, 0, 15) expects 0xffff0000
+    
+    # Clear second half of all 1 bit
+    ClearBitRange(0xffffffff, 16, 31) expects 0x0000ffff
+
+    # Error start > end
+    ClearBitRange(0xffffffff, 31, 1) expects 0xffffffff
+---
+# RotateLeft edge cases
+    # full 32 rotation
+    RotateLeft(5, 32) expects 5;
+
+    # Rotate half
+    RotateLeft(0xcccccccc, 16) expects 0xcccccccc
+
+    # Rotate None
+    RotateLeft(0xffffffff, 0) expects 0xffffffff
+
+    # Rotate 1
+    RotateLeft(0x80000000, 1) expects 1
+
+    # Rotate more than 32, should be same as 1
+    RotateLeft(0x80000000, 33) expects 1
+
+    # 2x Rotate more than 32, should be same as 1
+    RotateLeft(0x80000000, 65) expects 1
+---
+# SwapOddEvenBits edge cases
+    # 1010... convert to 0101...
+    SwapOddEvenBits(0xaaaaaaaa) expects 0x55555555
+
+    # 0101... convert to 1010...
+	SwapOddEvenBits(0x55555555) expects 0xaaaaaaaa
+
+    # half of Even odd both 1 => 0000...1100...
+	SwapOddEvenBits(0x0000cccc) expects 0x0000cccc

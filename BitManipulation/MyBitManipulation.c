@@ -10,7 +10,7 @@
 int ToggleBit(int num, int pos) {
    //Handle edge cases, Out of Bound
    if(pos < 0 || pos > 31) {
-      printf("Error: Position out of bound");
+      // printf("Error: Position out of bound");
       return -1;
    }
    // Toggle bits can be done by setting up a mask with 1 located at pos and doing XOR
@@ -82,7 +82,7 @@ uint32_t RotateLeft(uint32_t num, int d) {
       Get the bits that are offsetted by the left rotation by right shift 32 - d,
       Note to self: This is possible because the number does not get changed during this process
       Then combine the two using | to set the bits*/
-   return (num << d) | (num >> (32 - d));
+   return (num << d%32) | (num >> (32 - d%32));
 }
 
 /*
