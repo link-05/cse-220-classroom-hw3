@@ -2,6 +2,7 @@
 #include "MyBitManipulation.h"
 #include "Myfloat.h"
 #include "MyIntegers.h"
+// Name: Kevin Lin SBUID: 116145453
 
 /* =========================
 * PART 1: Bit Manipulation
