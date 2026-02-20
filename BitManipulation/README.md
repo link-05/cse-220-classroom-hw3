@@ -9,8 +9,8 @@ HW3/
 ├── MyIntegers.c
 └── README.txt  
 
-
-1- write your name and SBU ID in each of the file.
+Name: Kevin Lin SBUID:116145453
+Note: The structure of my test case is name I give the test case, the actual input, and the expected 
 
 # MyBitManipulation.c
 ---
@@ -111,3 +111,56 @@ HW3/
     # Negative multi-decimal only (-1234.0) exponent > 127
     construct_float_sf(0x01, 0x89, 0x1A4000) expects -1234.0
 ---
+# repr_convert Edge Cases
+	# Max negative value in 2's complement
+    repr_convert('2', 'S', 0x80000001);
+    expected output: ffffffff
+
+    # Negative value conversion
+    repr_convert('S', '2', 0x80000005);
+    expected output: fffffffb
+
+    # Positive Zero (2's to Sign)
+    repr_convert('2', 'S', 0x00000000);
+    expected output: 00000000
+
+    # Positive Zero self conversion (2's to 2's)
+    repr_convert('2', '2', 0x00000000);
+    expected output: 00000000
+
+    # Negative Zero (sign to 2's)
+    outcome is positive 0 because that is what the hw3 pdf instructs.
+    repr_convert('S', '2', 0x80000000);
+    expected output: 00000000
+
+    # Negative Zero self conversion (sign to sign)
+    repr_convert('S', 'S', 0x80000000);
+    expected output: 00000000
+
+    # Max Positive (2's to sign)
+    repr_convert('2', 'S', 0x7FFFFFFF);
+    expected output: 7fffffff
+
+    # Max Positive (sign to 2's)
+    repr_convert('S', '2', 0x7FFFFFFF);
+    expected output: 7fffffff
+
+    # Positive 1 (2's to sign)
+    repr_convert('2', 'S', 0x00000001);
+    expected output: 00000001
+
+    # Positive 1 (sign to 2's)
+    repr_convert('S', '2', 0x00000001);
+    expected output: 00000001
+
+    # Expected all test case output List
+    Hex: ffffffff
+    Hex: fffffffb
+    Hex: 00000000
+    Hex: 00000000
+    Hex: 00000000
+    Hex: 80000000
+    Hex: 7fffffff
+    Hex: 7fffffff
+    Hex: 00000001
+    Hex: 00000001
